@@ -1,0 +1,27 @@
+{{!-- {{#if email}}
+<h6> Thank you for signup {{email}}</h6>
+{{else}}
+<form action="/signup" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{/if}} --}}
+<div class="container-fluid mt-5">
+    <div class="row d-flex justify-content-between">
+        {{#each products}}
+        <div class="card col-md-3">
+            <img class="card-img-top img-fluid" src={{image}} alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title text-capitalize">{{name}}</h5>
+                <p class="card-text">{{desc}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

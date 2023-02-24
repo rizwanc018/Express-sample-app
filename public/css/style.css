@@ -1,0 +1,8 @@
+* {
+    box-sizing: border-box;
+    color: red !important;
+}
+
+.card, h5{
+    border: 2px solid red !important;
+}
