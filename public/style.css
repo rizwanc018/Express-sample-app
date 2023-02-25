@@ -1,0 +1,35 @@
+:root {
+    --btn-clr: hsl(163, 100%, 27%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,body {
+    /* width: 100vw; */
+    font-family: sans-serif;
+    margin: 0;
+}
+
+.card img {
+    min-height: 12rem;
+    object-fit: cover;
+}
+
+.dropdown-menu[data-bs-popper] {
+    right: 10px !important;
+    text-align: center;
+    min-width: fit-content;
+    padding-block:0 ;
+}
+
+form .form-control {
+    border: 2px solid var(--btn-clr);
+}
+
+.store-img {
+    max-width: 100%; 
+    height: auto;
+    /* object-fit: cover;  */
+}
