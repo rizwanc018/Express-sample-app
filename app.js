@@ -2,7 +2,7 @@ const express = require('express')
 const hbs = require('hbs')
 const session = require('express-session')
 const app = express()
-const port = 3000
+const port = 3003
 
 const { products } = require('./data')
 const creds = require("./config/credentials")
@@ -23,6 +23,10 @@ const verifyLogin = (req, res, next) => {
 
 app.get('/', verifyLogin, (req, res) => {
     res.render("index", { products, isLoggedIn: req.session.userloggedIn })
+})
+
+app.get('/table', verifyLogin, (req, res) => {
+    res.render("table", { products, isLoggedIn: req.session.userloggedIn })
 })
 
 app.get('/store/:id', verifyLogin, (req, res) => {

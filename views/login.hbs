@@ -8,9 +8,9 @@ background: radial-gradient(at bottom right, rgba(178,191,255,1) 0%, rgba(104,22
                     <div class="row g-0">
 
                         <div class="col-12 d-flex align-items-center">
-                            <div class="card-body p-4 p-lg-5 text-black">
+                            <div class="card-body p-5 pb-3 text-black">
 
-                                <form action="/login" method="post">
+                                <form novalidate action="/login" method="post">
 
                                     <div class="d-flex align-items-center mb-3 pb-1">
                                         <span class="h1 fw-bold mb-0">
@@ -39,7 +39,7 @@ background: radial-gradient(at bottom right, rgba(178,191,255,1) 0%, rgba(104,22
                                     <p class="text-danger m-0">Invalid username or password</p>
                                     {{/if}}
                                     <div class="form-outline mb-1">
-                                        <input type="email" id="email" name="email" class="form-control" />
+                                        <input type="email" id="email" name="email" class="form-control" required />
                                         <label class="form-label" for="email">Email address</label>
                                     </div>
 
@@ -53,13 +53,48 @@ background: radial-gradient(at bottom right, rgba(178,191,255,1) 0%, rgba(104,22
                                             style="background-color: hsl(163, 100%, 27%);">Login</button>
                                     </div>
 
-                                    <a class="small text-muted" href="#!">Forgot password?</a>
+                                    {{!-- <a class="small text-muted" href="#!">Forgot password?</a>
                                     <p class="mb-3 pb-lg-2" style="color: #393f81;">Don't have an account? <a href="#!"
-                                            style="color: #393f81;">Register here</a></p>
+                                            style="color: #393f81;">Register here</a></p> --}}
+                                    <br class="my-3">
                                     <a href="#!" class="small text-muted">Terms of use.</a>
                                     <a href="#!" class="small text-muted">Privacy policy</a>
                                 </form>
+                                <script>
+                                    const form = document.querySelector('form');
+                                    form.addEventListener('submit', e => {
+                                        if (!form.checkValidity()) {
+                                            e.preventDefault();
+                                        }
+                                        form.classList.add('was-validated');
+                                    })
+                                </script>
 
+                                {{!--
+                                <script>
+                                    const form = document.querySelector('form');
+                                    form.addEventListener('submit', e => {
+                                        if (!form.checkValidity()) {
+                                            e.preventDefault();
+                                        } else {
+                                            e.preventDefault()
+                                            $.ajax({
+                                                url: "https://script.google.com/macros/s/AKfycbzcpnuTpwcD8kA1S46kc_tZFbV7vUvExfW48Z9JwFdN9sbyrJlpOEDwnIEC9zTQaEEp/exec",
+                                                data: $("#submit-form").serialize(),
+                                                method: "POST",
+                                                success: function (response) {
+                                                    alert("Form submitted successfully")
+                                                    // window.location.reload()
+                                                    window.location.href = "http://127.0.0.1:5500/index.html"
+                                                },
+                                                error: function (err) {
+                                                    alert("Something Error")
+                                                }
+                                            })
+                                        }
+                                        form.classList.add('was-validated');
+                                    })
+                                </script> --}}
                             </div>
                         </div>
                     </div>
