@@ -2,10 +2,12 @@ const express = require('express')
 const hbs = require('hbs')
 const session = require('express-session')
 const app = express()
-const port = 3003
+const port = 3000
 const { products } = require('./data')
 const loginRouter = require('./routers/login')
+const nocache = require("nocache");
 
+app.use(nocache());
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: false }));
 app.set('view engine', 'hbs')

@@ -1,9 +1,10 @@
 const express = require('express')
+const nocache = require('nocache')
 const router = express.Router()
 const creds = require("../config/credentials")
 
 
-router.route('/')
+router.route('/', nocache())
     .get((req, res) => {
         if (req.session.userloggedIn) {
             res.redirect('/')
