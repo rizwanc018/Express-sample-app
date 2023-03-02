@@ -1,11 +1,10 @@
 const express = require('express')
-const nocache = require('nocache')
 const router = express.Router()
 const creds = require("../config/credentials")
+const bcrypt = require('bcrypt');
 
-
-router.route('/', nocache())
-    .get((req, res) => {
+router.route('/')
+.get((req, res) => {
         if (req.session.userloggedIn) {
             res.redirect('/')
         } else {
@@ -13,8 +12,10 @@ router.route('/', nocache())
             req.session.loginErr = null
         }
     })
-    .post((req, res) => {
-        if (creds.EMAIL === req.body.email && creds.PASSWORD === req.body.password) {
+    .post(async(req, res) => {
+        const HardPassword = await bcrypt.hash(creds.PASSWORD, 10)
+        const password = await bcrypt.hash(req.body.password,10)
+        if (creds.EMAIL === req.body.email && bcrypt.compare(HardPassword, password)) {
             req.session.userloggedIn = true
             res.redirect('/')
         } else {
@@ -22,4 +23,5 @@ router.route('/', nocache())
             res.redirect('/')
         }
     })
+
 module.exports = router
